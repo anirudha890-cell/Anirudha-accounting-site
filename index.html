@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudha Tripathy | Professional Accounting & Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Chatbot Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .chat-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Writing Person Animation */
+        @keyframes write-action {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            25% { transform: rotate(-5deg) translate(-2px, 2px); }
+            50% { transform: rotate(0deg) translate(0, 0); }
+            75% { transform: rotate(5deg) translate(2px, -2px); }
+            100% { transform: rotate(0deg) translate(0, 0); }
+        }
+
+        .writing-arm-group {
+            animation: write-action 0.8s infinite ease-in-out;
+            transform-origin: 240px 420px; /* Pivot near the wrist/paper contact */
+        }
+        
+        @keyframes paper-move {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-2px); }
+            100% { transform: translateX(0); }
+        }
+        
+        .animated-paper {
+            animation: paper-move 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <!-- Unique SVG Logo -->
+                    <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center text-white shadow-md">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 10L10 90H30L40 70H60L70 90H90L50 10Z" fill="white" fill-opacity="0.9"/>
+                            <path d="M50 30L65 60H35L50 30Z" fill="#1e3a8a"/> <!-- Cutout for A -->
+                            <rect x="10" y="10" width="80" height="15" rx="2" fill="white" fill-opacity="0.9"/> <!-- Top bar for T implication -->
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-slate-900 block leading-tight">Anirudha Tripathy</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Financial Consultant</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-slate-600 hover:text-blue-900 font-medium transition-colors">Home</a>
+                    <a href="#profile" class="text-slate-600 hover:text-blue-900 font-medium transition-colors">Profile</a>
+                    <a href="#services" class="text-slate-600 hover:text-blue-900 font-medium transition-colors">Services</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-blue-900 font-medium transition-colors">Pricing</a>
+                    <a href="#client-space" class="text-slate-600 hover:text-blue-900 font-medium transition-colors">Client Space</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-blue-900 text-white rounded-full font-medium hover:bg-blue-800 transition-colors shadow-lg hover:shadow-blue-900/20">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-900 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-slate-600 hover:bg-slate-50 hover:text-blue-900 rounded-md">Home</a>
+                <a href="#profile" class="block px-3 py-2 text-slate-600 hover:bg-slate-50 hover:text-blue-900 rounded-md">Profile</a>
+                <a href="#services" class="block px-3 py-2 text-slate-600 hover:bg-slate-50 hover:text-blue-900 rounded-md">Services</a>
+                <a href="#pricing" class="block px-3 py-2 text-slate-600 hover:bg-slate-50 hover:text-blue-900 rounded-md">Pricing</a>
+                <a href="#client-space" class="block px-3 py-2 text-slate-600 hover:bg-slate-50 hover:text-blue-900 rounded-md">Client Space</a>
+                <a href="#contact" class="block px-3 py-2 text-blue-900 font-bold hover:bg-slate-50 rounded-md">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-blue-900/90"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-sm font-medium">
+                        <i class="fas fa-check-circle"></i> Ex-Vice President
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                        Strategic Financial Consulting & <span class="text-blue-400">Problem Solving</span>
+                    </h1>
+                    <p class="text-xl text-slate-300 max-w-lg">
+                        Leveraging Big 4 experience to deliver precision accounting, complex financial modeling, and global tax compliance solutions.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#contact" class="px-8 py-4 bg-white text-blue-900 rounded-lg font-bold hover:bg-blue-50 transition-all shadow-lg text-center">
+                            Schedule Consultation
+                        </a>
+                        <a href="#services" class="px-8 py-4 bg-transparent border border-slate-400 text-white rounded-lg font-medium hover:bg-white/10 transition-all text-center">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- WordPress Ready: Animated Illustration -->
+                <div class="hidden lg:block relative group">
+                    <!-- Photo Space Replaced with SVG Animation -->
+                    <div class="relative w-80 h-96 mx-auto bg-slate-800 rounded-2xl shadow-2xl border-4 border-slate-700/50 overflow-hidden transform group-hover:scale-105 transition-transform duration-500 flex items-end justify-center">
+                        
+                        <!-- Animated SVG: Person with Pen -->
+                        <svg viewBox="0 0 400 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                            <defs>
+                                <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#172554;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="shadow">
+                                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Background (Wall) -->
+                            <rect width="400" height="500" fill="#0f172a" />
+                            
+                            <!-- Head -->
+                            <circle cx="200" cy="180" r="55" fill="#f8fafc" />
+                            <!-- Hair -->
+                            <path d="M145 180 Q 145 110 200 110 Q 255 110 255 180 Z" fill="#334155" />
+
+                            <!-- Shoulders/Suit Body -->
+                            <path d="M 80 500 L 80 320 Q 200 270 320 320 L 320 500 Z" fill="url(#suitGrad)" />
+                            
+                            <!-- Shirt V-Neck & Tie -->
+                            <path d="M 170 320 L 200 420 L 230 320 Z" fill="white" /> <!-- Shirt -->
+                            <path d="M 200 320 L 210 350 L 200 380 L 190 350 Z" fill="#ef4444" filter="url(#shadow)" /> <!-- Tie Knot -->
+                            <path d="M 200 380 L 215 500 H 185 Z" fill="#ef4444" /> <!-- Tie Body -->
+
+                            <!-- Desk Surface (Foreground) -->
+                            <rect x="0" y="450" width="400" height="50" fill="#334155" />
+                            
+                            <!-- Paper on Desk -->
+                            <g class="animated-paper">
+                                <rect x="120" y="460" width="160" height="100" fill="white" rx="2" transform="rotate(-2 200 460)" filter="url(#shadow)" />
+                                <!-- Lines on paper -->
+                                <line x1="140" y1="475" x2="260" y2="470" stroke="#cbd5e1" stroke-width="2" transform="rotate(-2 200 460)" />
+                                <line x1="140" y1="485" x2="260" y2="480" stroke="#cbd5e1" stroke-width="2" transform="rotate(-2 200 460)" />
+                                <line x1="140" y1="495" x2="240" y2="490" stroke="#cbd5e1" stroke-width="2" transform="rotate(-2 200 460)" />
+                            </g>
+
+                            <!-- Writing Arm Group (Right Arm) -->
+                            <g class="writing-arm-group">
+                                <!-- Sleeve (Forearm) coming from right side of body -->
+                                <path d="M 320 340 Q 300 400 240 430" stroke="#1e3a8a" stroke-width="40" stroke-linecap="round" fill="none" />
+                                
+                                <!-- Hand -->
+                                <circle cx="230" cy="440" r="18" fill="#f8fafc" />
+                                
+                                <!-- Pen -->
+                                <line x1="230" y1="440" x2="190" y2="470" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" /> <!-- Pen Body -->
+                                <line x1="190" y1="470" x2="185" y2="474" stroke="#1e293b" stroke-width="3" stroke-linecap="round" /> <!-- Pen Tip -->
+                            </g>
+                        </svg>
+
+                    </div>
+                    
+                    <!-- Decorative Elements -->
+                    <div class="absolute -z-10 top-10 right-10 w-80 h-96 border-2 border-blue-500/30 rounded-2xl translate-x-4 translate-y-4"></div>
+                    <div class="absolute -z-10 bottom-10 left-10 w-24 h-24 bg-blue-600 rounded-full blur-2xl opacity-40"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Profile Section -->
+    <section id="profile" class="py-20 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-12 gap-12 items-start">
+                
+                <!-- Profile Text -->
+                <div class="md:col-span-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">About Anirudha Tripathy</h2>
+                    <div class="prose prose-lg text-slate-600 leading-relaxed text-justify">
+                        <p class="mb-4">
+                            Anirudha Tripathy is a seasoned financial strategist and Ex-Vice President with extensive experience transforming financial operations for global organizations. Holding an M.Com and B.Com(H), he combines deep academic foundations with the rigorous discipline of Big 4 consulting. Anirudha’s expertise transcends borders, skillfully navigating complex accounting landscapes across India (IAS/GST), the US (GAAP/Tax), EMEA, Australia, and the Middle East.
+                        </p>
+                        <p>
+                            He specializes in high-stakes financial modeling, delivering precision in LBOs, PCAP, and waterfall distribution models for private equity. Beyond the numbers, Anirudha is a problem solver, adept at managing GBS setups, optimizing accounting operations, and ensuring strict regulatory compliance. Dedicated to excellence, he empowers clients—from agile startups to multinational corporations—with actionable financial insights and robust operational frameworks that drive sustainable growth.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Credentials Sidebar -->
+                <div class="md:col-span-4 space-y-6">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2">Credentials</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xs">VP</div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Ex-Vice President</div>
+                                    <div class="text-xs text-slate-500">Corporate Finance</div>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xs">EDU</div>
+                                <div>
+                                    <div class="font-bold text-slate-900">M.COM, B.COM(H)</div>
+                                    <div class="text-xs text-slate-500">Academic Excellence</div>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xs">EXP</div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Big 4 Experience</div>
+                                    <div class="text-xs text-slate-500">Consulting & Audit</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Comprehensive Financial Services</h2>
+                <p class="text-lg text-slate-600">Delivering end-to-end accounting and financial solutions tailored to your business needs across multiple geographies.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Core Accounting -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Core Accounting</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500 text-sm"></i> Bookkeeping & GL</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500 text-sm"></i> Accounts Payable/Receivable</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500 text-sm"></i> Payroll Management</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500 text-sm"></i> Intercompany Consolidation</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500 text-sm"></i> Financial Reporting</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500 text-sm"></i> Real-Estate & Mortgage Accounting</li>
+                    </ul>
+                </div>
+
+                <!-- Tax Services -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Tax Compliance</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500 text-sm"></i> GST Compliance (India)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500 text-sm"></i> VAT Compliance (Middle East & US)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500 text-sm"></i> Income Tax (US)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500 text-sm"></i> Income Tax (UK)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500 text-sm"></i> Income Tax (Middle East)</li>
+                    </ul>
+                </div>
+
+                <!-- Financial Models -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Advanced Data Models</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500 text-sm"></i> 3-Statement Financial Models</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500 text-sm"></i> LBO & PCAP Models</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500 text-sm"></i> Waterfall Distribution (PE)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500 text-sm"></i> Loan Amortization</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500 text-sm"></i> XIRR/IRR Calculation</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500 text-sm"></i> Insurance Accounting Models</li>
+                    </ul>
+                </div>
+
+                <!-- Project Management -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Project Management</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-orange-500 text-sm"></i> GBS Set Up</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-orange-500 text-sm"></i> Accounting Operations Setup</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-orange-500 text-sm"></i> Delivery Services Optimization</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-orange-500 text-sm"></i> ERP Data Cleaning</li>
+                    </ul>
+                </div>
+
+                <!-- Regional Expertise -->
+                <div class="md:col-span-2 bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl shadow-lg text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-10">
+                        <i class="fas fa-globe-asia text-9xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-6">Global Accounting Standards</h3>
+                        <p class="text-slate-300 mb-6">Extensive experience navigating complex regulatory environments across continents.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                            <div class="flex items-center gap-3">
+                                <span class="fi fi-in"></span> <!-- Placeholder for flag if needed -->
+                                <div>
+                                    <div class="font-bold">India</div>
+                                    <div class="text-xs text-slate-400">IAS / GST</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <div class="font-bold">United States</div>
+                                    <div class="text-xs text-slate-400">US GAAP / Tax</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <div class="font-bold">EMEA</div>
+                                    <div class="text-xs text-slate-400">Regional Compliance</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <div class="font-bold">Australia</div>
+                                    <div class="text-xs text-slate-400">AUS Accounting</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <div class="font-bold">Middle East</div>
+                                    <div class="text-xs text-slate-400">VAT / Accounting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Flexible Engagement Models</h2>
+                <p class="text-lg text-slate-600">Professional services tailored to your project scope and duration.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Hourly/Ad-Hoc -->
+                <div class="border border-slate-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-lg transition-all">
+                    <h3 class="text-lg font-bold text-slate-900 uppercase tracking-wide mb-2">Consultation</h3>
+                    <div class="text-3xl font-bold text-slate-900 mb-6">Hourly / Ad-hoc</div>
+                    <p class="text-slate-600 mb-6">Ideal for specific problem solving, model review, or tax consultation sessions.</p>
+                    <a href="#contact" class="block text-center py-3 border border-slate-300 rounded-lg font-medium hover:bg-slate-50 transition-colors">Inquire Rates</a>
+                </div>
+
+                <!-- Project Based -->
+                <div class="border-2 border-blue-600 bg-blue-50/10 rounded-2xl p-8 relative hover:shadow-lg transition-all">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">POPULAR</div>
+                    <h3 class="text-lg font-bold text-blue-900 uppercase tracking-wide mb-2">Project Based</h3>
+                    <div class="text-3xl font-bold text-slate-900 mb-6">Fixed Price</div>
+                    <p class="text-slate-600 mb-6">Perfect for GBS setup, complex financial modeling, or year-end reporting packages.</p>
+                    <a href="#contact" class="block text-center py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">Get a Quote</a>
+                </div>
+
+                <!-- Retainer -->
+                <div class="border border-slate-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-lg transition-all">
+                    <h3 class="text-lg font-bold text-slate-900 uppercase tracking-wide mb-2">Retainer</h3>
+                    <div class="text-3xl font-bold text-slate-900 mb-6">Monthly</div>
+                    <p class="text-slate-600 mb-6">Ongoing bookkeeping, tax compliance, and financial oversight for your business.</p>
+                    <a href="#contact" class="block text-center py-3 border border-slate-300 rounded-lg font-medium hover:bg-slate-50 transition-colors">Contact for Terms</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Space / File Upload -->
+    <section id="client-space" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-teal-500 rounded-full blur-[100px] opacity-20"></div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                <i class="fas fa-cloud-upload-alt text-2xl text-blue-400"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Secure Client Space</h2>
+            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
+                Securely upload your financial documents, invoices, and data sheets. This portal connects directly to our encrypted shared drive.
+            </p>
+            
+            <a href="#" onclick="alert('This would link to your specific Google Drive, Dropbox, or OneDrive folder.')" class="inline-flex items-center gap-3 px-8 py-4 bg-blue-500 hover:bg-blue-400 rounded-lg font-bold transition-all shadow-lg hover:shadow-blue-500/50 group">
+                <i class="fas fa-folder-open group-hover:scale-110 transition-transform"></i>
+                Access Upload Portal
+            </a>
+            <p class="mt-4 text-sm text-slate-500">
+                <i class="fas fa-lock text-xs mr-1"></i> 256-bit SSL Encrypted Connection
+            </p>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-16 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by clients in various sectors</h3>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale">
+                <!-- Generic placeholders for client logos -->
+                <div class="flex items-center gap-2 text-xl font-bold text-slate-700">
+                    <i class="fas fa-building"></i> CorpFin
+                </div>
+                <div class="flex items-center gap-2 text-xl font-bold text-slate-700">
+                    <i class="fas fa-landmark"></i> EquityPartners
+                </div>
+                <div class="flex items-center gap-2 text-xl font-bold text-slate-700">
+                    <i class="fas fa-globe"></i> GlobalTrade
+                </div>
+                <div class="flex items-center gap-2 text-xl font-bold text-slate-700">
+                    <i class="fas fa-hospital"></i> MedSystems
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Let's solve your accounting challenges.</h2>
+                    <p class="text-lg text-slate-600 mb-8">
+                        Whether you need a complex financial model or ongoing bookkeeping, I bring Big 4 expertise to your project. Reach out for a preliminary discussion.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Email</h3>
+                                <p class="text-slate-600">tripathy.anirudha@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Phone</h3>
+                                <p class="text-slate-600">8904888808</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Location</h3>
+                                <p class="text-slate-600">Based in India, serving clients Globally.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm">
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your message. I will get back to you shortly.');" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="John Doe">
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="john@company.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Service Interest</label>
+                                <select class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
+                                    <option>Accounting & Bookkeeping</option>
+                                    <option>Tax Services (Intl)</option>
+                                    <option>Financial Modeling</option>
+                                    <option>Project Management</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Project Details</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Briefly describe your requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-blue-900 text-white rounded-lg font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-900/20">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-white text-xl font-serif font-bold mb-4">Anirudha Tripathy</div>
+                    <p class="max-w-sm mb-6">Expert financial consulting for modern businesses. Combining Big 4 discipline with freelance flexibility.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Bookkeeping</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Financial Reporting</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Tax Compliance</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">LBO Modeling</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm">
+                <p>&copy; 2024 Anirudha Tripathy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <!-- Toggle Button -->
+    <button id="chat-toggle" onclick="toggleChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-white border-2 border-blue-600 hover:border-blue-700 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 z-50 chat-float group overflow-hidden">
+        <!-- Wall-E SVG Icon for Toggle -->
+        <svg viewBox="0 0 100 100" class="w-10 h-10 group-hover:hidden" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0, 5)">
+                <!-- Neck -->
+                <rect x="42" y="45" width="16" height="15" fill="#94a3b8" />
+                <!-- Eyes -->
+                <g transform="rotate(-5, 50, 40)">
+                    <path d="M22 25 Q 28 12 48 25 Q 52 28 48 40 L 22 40 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                    <circle cx="35" cy="32" r="5" fill="#1e293b">
+                        <animate attributeName="cx" values="35;32;35" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                </g>
+                <g transform="rotate(5, 50, 40)">
+                    <path d="M78 25 Q 72 12 52 25 Q 48 28 52 40 L 78 40 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                    <circle cx="65" cy="32" r="5" fill="#1e293b">
+                        <animate attributeName="cx" values="65;68;65" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                </g>
+                <!-- Body -->
+                <rect x="20" y="55" width="60" height="45" rx="6" fill="#fbbf24" stroke="#d97706" stroke-width="3" />
+                <rect x="30" y="65" width="40" height="15" fill="#334155" rx="2" />
+                <circle cx="38" cy="72" r="3" fill="#ef4444">
+                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+                </circle> 
+                <rect x="48" y="70" width="15" height="5" fill="#10b981" /> 
+            </g>
+        </svg>
+        <i class="fas fa-times text-2xl text-blue-600 hidden group-hover:block"></i>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="fixed bottom-24 right-6 w-[90vw] md:w-96 bg-white rounded-2xl shadow-2xl z-50 hidden flex-col border border-slate-200 overflow-hidden transform transition-all duration-300 origin-bottom-right scale-95 opacity-0 max-h-[500px]">
+        <!-- Header -->
+        <div class="bg-blue-900 p-4 flex justify-between items-center text-white shadow-md">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border-2 border-blue-300 overflow-hidden">
+                         <!-- Wall-E SVG Avatar in Header -->
+                         <svg viewBox="0 0 100 100" class="w-10 h-10 mt-1" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="scale(0.9) translate(5, 5)">
+                                <rect x="42" y="45" width="16" height="15" fill="#94a3b8" />
+                                <g transform="rotate(-5, 50, 40)">
+                                    <path d="M22 25 Q 28 12 48 25 Q 52 28 48 40 L 22 40 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                                    <circle cx="35" cy="32" r="5" fill="#1e293b" />
+                                </g>
+                                <g transform="rotate(5, 50, 40)">
+                                    <path d="M78 25 Q 72 12 52 25 Q 48 28 52 40 L 78 40 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                                    <circle cx="65" cy="32" r="5" fill="#1e293b" />
+                                </g>
+                                <rect x="20" y="55" width="60" height="45" rx="6" fill="#fbbf24" stroke="#d97706" stroke-width="3" />
+                                <rect x="30" y="65" width="40" height="15" fill="#334155" rx="2" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-blue-900 animate-pulse"></div>
+                </div>
+                <div>
+                    <span class="font-bold block text-sm">FinBot Assistant</span>
+                    <span class="text-xs text-blue-200">Online & Ready</span>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="text-white hover:bg-blue-800 p-2 rounded-full transition-colors"><i class="fas fa-chevron-down"></i></button>
+        </div>
+        
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 p-4 h-80 overflow-y-auto space-y-4 bg-slate-50">
+            <!-- Initial content injected by JS -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-3 bg-white border-t border-slate-100">
+             <div class="flex gap-2">
+                <input type="text" id="chat-input" placeholder="Type a message..." class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-all shadow-sm transform hover:scale-105">
+                    <i class="fas fa-paper-plane text-sm"></i>
+                </button>
+             </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    menu.classList.add('hidden');
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        /* --- Chatbot Logic --- */
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatToggleBtn = document.getElementById('chat-toggle');
+        let isChatOpen = false;
+        let isChatInitialized = false;
+
+        // Define Reusable Avatar String
+        const botAvatarSVG = `
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 border border-blue-200 overflow-hidden">
+            <svg viewBox="0 0 100 100" class="w-6 h-6 mt-1" xmlns="http://www.w3.org/2000/svg">
+                <g transform="scale(1.1) translate(-5, -5)">
+                    <rect x="42" y="45" width="16" height="15" fill="#94a3b8" />
+                    <g transform="rotate(-5, 50, 40)">
+                        <path d="M22 25 Q 28 12 48 25 Q 52 28 48 40 L 22 40 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                        <circle cx="35" cy="32" r="5" fill="#1e293b" />
+                    </g>
+                    <g transform="rotate(5, 50, 40)">
+                        <path d="M78 25 Q 72 12 52 25 Q 48 28 52 40 L 78 40 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                        <circle cx="65" cy="32" r="5" fill="#1e293b" />
+                    </g>
+                    <rect x="20" y="55" width="60" height="45" rx="6" fill="#fbbf24" stroke="#d97706" stroke-width="3" />
+                </g>
+            </svg>
+        </div>`;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                // Open Chat
+                chatWindow.classList.remove('hidden');
+                // Remove animation class from button while chat is open
+                chatToggleBtn.classList.remove('chat-float');
+                
+                setTimeout(() => {
+                    chatWindow.classList.remove('opacity-0', 'scale-95', 'translate-y-4');
+                    chatWindow.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+                }, 10);
+
+                if (!isChatInitialized) {
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        removeTypingIndicator();
+                        addBotMessage("👋 Hello! I'm your virtual assistant. How can I help you with Anirudha's services today?", true);
+                        isChatInitialized = true;
+                    }, 1500);
+                }
+            } else {
+                // Close Chat
+                chatWindow.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+                chatWindow.classList.add('opacity-0', 'scale-95', 'translate-y-4');
+                // Restart animation
+                chatToggleBtn.classList.add('chat-float');
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            
+            // Add User Message
+            addUserMessage(text);
+            chatInput.value = '';
+
+            // Process Response
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                processUserQuery(text);
+            }, 1000 + Math.random() * 1000); // Random delay 1-2s
+        }
+
+        function addUserMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'flex justify-end mb-4 animate-fade-in-up';
+            div.innerHTML = `
+                <div class="bg-blue-600 text-white rounded-2xl rounded-tr-none py-2 px-4 max-w-[80%] shadow-sm text-sm">
+                    ${text}
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            scrollToBottom();
+        }
+
+        function addBotMessage(text, withOptions = false) {
+            const div = document.createElement('div');
+            div.className = 'flex justify-start mb-4 items-end gap-2 animate-fade-in-up';
+            
+            let optionsHtml = '';
+            if (withOptions) {
+                optionsHtml = `
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <button onclick="handleOption('Services')" class="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">Services</button>
+                        <button onclick="handleOption('Pricing')" class="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">Pricing</button>
+                        <button onclick="handleOption('Contact')" class="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">Contact Info</button>
+                        <button onclick="handleOption('Book')" class="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">Book Consultation</button>
+                    </div>
+                `;
+            }
+
+            div.innerHTML = `
+                ${botAvatarSVG}
+                <div class="bg-white border border-slate-200 text-slate-700 rounded-2xl rounded-tl-none py-2 px-4 max-w-[85%] shadow-sm text-sm">
+                    ${text}
+                    ${optionsHtml}
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            scrollToBottom();
+        }
+
+        function showTypingIndicator() {
+            const div = document.createElement('div');
+            div.id = 'typing-indicator';
+            div.className = 'flex justify-start mb-4 items-end gap-2';
+            div.innerHTML = `
+                ${botAvatarSVG}
+                <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none py-3 px-4 shadow-sm">
+                    <div class="flex gap-1">
+                        <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                        <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                        <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            scrollToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        function handleOption(option) {
+            addUserMessage(option); // Simulate user clicking as a message
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                if (option === 'Services') processUserQuery('services');
+                else if (option === 'Pricing') processUserQuery('pricing');
+                else if (option === 'Contact') processUserQuery('contact');
+                else if (option === 'Book') processUserQuery('book');
+            }, 800);
+        }
+
+        function processUserQuery(text) {
+            text = text.toLowerCase();
+            let response = "";
+
+            if (text.includes('service') || text.includes('offer')) {
+                response = "We offer Core Accounting (GL, AP/AR, Payroll), Tax Compliance (Global), Financial Modeling (LBO, Waterfall), and Project Management services.";
+            } else if (text.includes('price') || text.includes('cost') || text.includes('rate')) {
+                response = "We offer flexible models: Hourly/Ad-hoc for consultations, Fixed Price for specific projects, and Monthly Retainers for ongoing support.";
+            } else if (text.includes('contact') || text.includes('email') || text.includes('phone')) {
+                response = "You can reach Anirudha at <strong>8904888808</strong> or via email at <strong>tripathy.anirudha@gmail.com</strong>.";
+            } else if (text.includes('book') || text.includes('appointment')) {
+                response = "Great! Please fill out the contact form below or email us directly to schedule your consultation.";
+                document.querySelector('#contact').scrollIntoView({behavior:'smooth'});
+            } else {
+                response = "I'm not sure about that. Would you like to check our Services, Pricing, or Contact details?";
+                addBotMessage(response, true);
+                return;
+            }
+            addBotMessage(response);
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+</body>
+</html>
